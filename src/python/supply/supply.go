@@ -687,7 +687,7 @@ func (s *Supplier) RunUvVendored() error {
 	cmd.Stdout = indentWriter(os.Stdout)
 	cmd.Stderr = indentWriter(os.Stderr)
 	if err := s.Command.Run(cmd); err != nil {
-		s.Log.Info("Running uv pip install failed. The vendor directory must contain all packages from uv.lock, matching the hashes in uv.lock. If the project defines a [build-system], its build backend must be vendored as well.")
+		s.Log.Info("Running uv pip install failed. The vendor directory must contain all packages from uv.lock, matching the hashes in uv.lock. If the project defines a [build-system], its build backend must be vendored as well. Packages from [tool.uv.sources] that use git, URL, or path sources cannot be vendored.")
 		return fmt.Errorf("could not run uv pip install: %v", err)
 	}
 

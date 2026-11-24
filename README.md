@@ -29,6 +29,8 @@ Apps managed with [uv](https://docs.astral.sh/uv/) are supported by pushing the 
 
   If the project defines a `[build-system]`, its build backend (e.g. `hatchling`) must be vendored as well.
 
+  Vendored installs only support packages available as wheels (from PyPI or a configured package index). If the project uses `[tool.uv.sources]` overrides that point to git repositories, URLs, or local paths, those packages cannot be vendored — use the non-vendored (online) install path instead.
+
 ## Adding new dependencies
 
 If you want to add a new dependency to the buildpack, please add it to the [config.yml](https://github.com/cloudfoundry/buildpacks-ci/blob/5a63d13df09f83d5dff7c71d0a12c3e2dc798d39/pipelines/dependency-builds/config.yml#L272) file. For example, if you want to add a new version of Python, add an entry like the following:

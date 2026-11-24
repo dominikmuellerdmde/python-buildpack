@@ -582,7 +582,7 @@ var _ = Describe("Supply", func() {
 				mockCommand.EXPECT().Run(gomock.Any()).Return(errors.New("exit status 1"))
 
 				Expect(supplier.RunUvVendored()).To(MatchError("could not run uv pip install: exit status 1"))
-				Expect(buffer.String()).To(ContainSubstring("The vendor directory must contain all packages from uv.lock, matching the hashes in uv.lock. If the project defines a [build-system], its build backend must be vendored as well."))
+				Expect(buffer.String()).To(ContainSubstring("The vendor directory must contain all packages from uv.lock, matching the hashes in uv.lock. If the project defines a [build-system], its build backend must be vendored as well. Packages from [tool.uv.sources] that use git, URL, or path sources cannot be vendored."))
 			})
 		})
 
